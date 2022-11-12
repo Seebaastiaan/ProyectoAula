@@ -19,7 +19,8 @@ public class Ventas extends JFrame implements java.io.Serializable, ActionListen
     JTextField Clave, cantidad, nomb, cost, cant;
     JLabel  total, titulo, superior, inferior, txtNomb, txtCant, txtTot;
     JButton vender, menu, añadir, mas;
-      JLabel foto;                    ImageIcon iconoo;
+      JLabel foto;                    ImageIcon iconoo, abarrotes;
+       JLabel LogoAb;
     public Ventas(){
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -51,6 +52,15 @@ public class Ventas extends JFrame implements java.io.Serializable, ActionListen
         this.superior.setBackground(new java.awt.Color(32, 67, 38));
         this.superior.setOpaque(true);
         add(superior);
+        LogoAb  =new JLabel();
+        LogoAb.setBounds(75, 100, 200, 150);
+        add(LogoAb);
+        
+        abarrotes = new ImageIcon(getClass().getResource("/imagenes/Abarrotes.png"));
+        Image aba2 = abarrotes.getImage();
+        Image newaba2 = aba2.getScaledInstance(LogoAb.getWidth(), LogoAb.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon newIcono = new ImageIcon(newaba2);
+        LogoAb.setIcon(newIcono);
         
         inferior = new JLabel();
         inferior.setBounds(0, 620, 1000, 50);

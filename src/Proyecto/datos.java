@@ -10,6 +10,8 @@ public class datos implements java.io.Serializable{
     private int costo;
     private String Nombre;
     private int Cantidad;
+    private String Usuario;
+    private String Contraseña;
     public int getClave() {
         return clave;
     }
@@ -40,6 +42,22 @@ public class datos implements java.io.Serializable{
 
     public void setCantidad(int Cantidad) {
         this.Cantidad = Cantidad;
+    }
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+
+    public String getContraseña() {
+        return Contraseña;
+    }
+
+    public void setContraseña(String Contraseña) {
+        this.Contraseña = Contraseña;
     }
     
     

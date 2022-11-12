@@ -22,8 +22,8 @@ public class Bajas extends JFrame implements ActionListener{
     JTextField Ingresa, Cantidad, Nombre, Precio;
     JLabel Clavesilla, Textito, Cantidadilla, Nombresillo, Precillo ;
     JButton bajar, regresar;
-      JLabel foto;                    ImageIcon iconoo;
-    
+      JLabel foto;                    ImageIcon iconoo, abarrotes;
+     JLabel LogoAb;
     public Bajas (){
     
     setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -61,6 +61,7 @@ public class Bajas extends JFrame implements ActionListener{
         this.superior.setBackground(new java.awt.Color(32, 67, 38));
         this.superior.setOpaque(true);
         add(superior);
+        
         
         Ingresa = new JTextField();
         Ingresa.setBounds(400, 250, 230, 40);

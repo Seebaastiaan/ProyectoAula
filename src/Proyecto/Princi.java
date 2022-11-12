@@ -18,7 +18,8 @@ import javax.swing.SwingConstants;
     JButton Altas;  JButton Bajas;  JButton Consultas;
     JButton Cambios;                JButton Ventas;
     JLabel superior;                JLabel inferior;
-    JLabel foto;                    ImageIcon iconoo;
+    JLabel foto;                    ImageIcon iconoo, abarrotes;
+    JLabel altas;                   JLabel LogoAb;
     
     public Princi(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -45,6 +46,18 @@ import javax.swing.SwingConstants;
         this.superior.setOpaque(true);
         add(superior);
         
+        LogoAb  =new JLabel();
+        LogoAb.setBounds(330, 100, 300, 200);
+        add(LogoAb);
+        
+        abarrotes = new ImageIcon(getClass().getResource("/imagenes/Abarrotes.png"));
+        Image aba2 = abarrotes.getImage();
+        Image newaba2 = aba2.getScaledInstance(LogoAb.getWidth(), LogoAb.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon newIcono = new ImageIcon(newaba2);
+        LogoAb.setIcon(newIcono);
+        
+        
+        
         
         inferior = new JLabel();
         inferior.setBounds(0, 620, 1000, 50);
@@ -52,12 +65,16 @@ import javax.swing.SwingConstants;
         this.inferior.setOpaque(true);
         add(inferior);
         
+         
         Altas = new JButton("Altas");
         Altas.setBounds(100, 380, 100, 40);
         Altas.addActionListener(this);
-        this.Altas.setBackground(new java.awt.Color(50, 205, 50));
+       this.Altas.setBackground(new java.awt.Color(50, 205, 50));
         this.Altas.setOpaque(true);
         add(Altas);
+        
+
+        
         
         Bajas = new JButton("Bajas");
         Bajas.setBounds(330, 380, 100, 40);

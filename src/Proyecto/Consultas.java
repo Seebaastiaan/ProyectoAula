@@ -20,7 +20,8 @@ public class Consultas extends JFrame implements java.io.Serializable, ActionLis
     JTextField Nombre, Clave, Cantidad, Precio, Ingresa;    
     JLabel Nombresillo, Clavesilla, Cantidadilla, Precillo, Textito, superior, inferior;
     JButton Ingresar, Regresar, Regresarte;
-      JLabel foto;                    ImageIcon iconoo;
+      JLabel foto;                    ImageIcon iconoo, abarrotes;
+       JLabel LogoAb;
       
     public Consultas(){
     setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -58,6 +59,16 @@ public class Consultas extends JFrame implements java.io.Serializable, ActionLis
         this.superior.setBackground(new java.awt.Color(32, 67, 38));
         this.superior.setOpaque(true);
         add(superior);
+        
+        LogoAb  =new JLabel();
+        LogoAb.setBounds(75, 100, 200, 150);
+        add(LogoAb);
+        
+        abarrotes = new ImageIcon(getClass().getResource("/imagenes/Abarrotes.png"));
+        Image aba2 = abarrotes.getImage();
+        Image newaba2 = aba2.getScaledInstance(LogoAb.getWidth(), LogoAb.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon newIcono = new ImageIcon(newaba2);
+        LogoAb.setIcon(newIcono);
         
         Ingresa = new JTextField();
         Ingresa.setBounds(400, 250, 230, 40);
@@ -151,7 +162,7 @@ public class Consultas extends JFrame implements java.io.Serializable, ActionLis
                     for (int i = 0; i < cuantos; i++) {
                     if(Integer.parseInt(Ingresa.getText()) == listita.get(i).getClave()){
                     Nombre.setText(listita.get(i).getNombre());
-                    Cantidad.setText("" + listita.get(i).getCantidad());
+                    Cantidad.setText("$ " + listita.get(i).getCantidad());
                     Precio.setText("" + listita.get(i).getCosto());
                     JOptionPane.showMessageDialog(this, "Este es el objeto");
                     Nombre.setEditable(false);

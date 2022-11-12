@@ -18,7 +18,9 @@ public class Cambios extends javax.swing.JFrame implements java.io.Serializable,
     JLabel superior, inferior, titulo, tituprodu, titunom, titupre, pregunta, nuevo, clavz;
     JButton Ingresar, RegresarMenu, nCantidad, nNombre, nPrecio, nCambiar;
     int lugar = 0, pos = 0;;
-      JLabel foto;                    ImageIcon iconoo;
+      JLabel foto;                    ImageIcon iconoo, abarrotes;
+       JLabel LogoAb;
+      
     public Cambios(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBounds(150, 10, 1000, 700);
@@ -44,6 +46,16 @@ public class Cambios extends javax.swing.JFrame implements java.io.Serializable,
         this.superior.setBackground(new java.awt.Color(32, 67, 38));
         this.superior.setOpaque(true);
         add(superior);
+        
+        LogoAb  =new JLabel();
+        LogoAb.setBounds(75, 100, 200, 150);
+        add(LogoAb);
+        
+        abarrotes = new ImageIcon(getClass().getResource("/imagenes/Abarrotes.png"));
+        Image aba2 = abarrotes.getImage();
+        Image newaba2 = aba2.getScaledInstance(LogoAb.getWidth(), LogoAb.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon newIcono = new ImageIcon(newaba2);
+        LogoAb.setIcon(newIcono);
         
         inferior = new JLabel();
         inferior.setBounds(0, 620, 1000, 50);

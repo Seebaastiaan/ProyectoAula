@@ -19,7 +19,8 @@ import javax.swing.JTextField;
     JTextField Nombre, Clave, Costo, Cantidad ;
     JLabel Titulo, Nombresillo, Clavesilla, Costillo, Cantidadilla, superior, inferior, Textito;
     JButton Agrega, Regresar;
-      JLabel foto;                    ImageIcon iconoo;
+      JLabel foto;                    ImageIcon iconoo, abarrotes;
+       JLabel LogoAb;
     public Altas(){
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -81,7 +82,7 @@ import javax.swing.JTextField;
         Costo.setBounds(250, 400, 180, 40);
         add(Costo);
         
-        Costillo = new JLabel("Costo");
+        Costillo = new JLabel("Costo          $ ");
         Costillo.setBounds(175, 400, 180, 40);
         add(Costillo);
         setVisible(true);

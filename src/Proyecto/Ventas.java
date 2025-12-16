@@ -35,12 +35,6 @@ public class Ventas extends JFrame implements java.io.Serializable, ActionListen
         foto.setBounds(200, 10, 600, 80);
         add(foto);
         
-        iconoo = new ImageIcon(getClass().getResource("/imagenes/LogoBarrita.png"));
-        Image img2 = iconoo.getImage();
-        Image newimg2 = img2.getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newimg2);
-        foto.setIcon(newIcon);     
-        
         titulo = new JLabel("Ventas");
         titulo.setFont(new java.awt.Font("Segoe UI", 1, 18));
         titulo.setBounds(440, 120, 150, 60);

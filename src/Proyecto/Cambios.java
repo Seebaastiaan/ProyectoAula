@@ -35,11 +35,6 @@ public class Cambios extends javax.swing.JFrame implements java.io.Serializable,
         foto.setBounds(200, 10, 600, 80);
         add(foto);
         
-        iconoo = new ImageIcon(getClass().getResource("/imagenes/LogoBarrita.png"));
-        Image img2 = iconoo.getImage();
-        Image newimg2 = img2.getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newimg2);
-        foto.setIcon(newIcon); 
         
         superior = new JLabel();
         superior.setBounds(0, 0, 1000, 100);

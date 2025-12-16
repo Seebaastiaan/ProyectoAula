@@ -4,10 +4,12 @@ package Proyecto;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -37,12 +39,6 @@ public class Login  extends JFrame implements java.io.Serializable, ActionListen
         foto = new JLabel();
         foto.setBounds(200, 10, 600, 80);
         add(foto);
-        
-        iconoo = new ImageIcon(getClass().getResource("/imagenes/LogoBarrita.png"));
-        Image img2 = iconoo.getImage();
-        Image newimg2 = img2.getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newimg2);
-        foto.setIcon(newIcon);
         
         superior = new JLabel();
         superior.setBounds(0, 0, 1000, 100);
@@ -149,24 +145,105 @@ public class Login  extends JFrame implements java.io.Serializable, ActionListen
                contraa.setVisible(false);
                verpass.setText("Ocultar");
            }
-           else
-               if(cadenita.equals("Ocultar")){
+           else if(cadenita.equals("Ocultar")){
                passver.setVisible(false);
                verpass.setText("Ver");
                contraa.setVisible(true);
                contraa.setText(passver.getText());
-               }
-           if(cadenita.equals("Nuevo Usuario")){
-           Ingresr.setVisible(false);
-           NuevoUs.setVisible(false);
-           Aceptar.setVisible(true);
-           contraa.setText("");
-           Usuario.setText("");
-               
-                    
-                    }
-           
            }
-           
+           else if(cadenita.equals("Nuevo Usuario")){
+               Ingresr.setVisible(false);
+               NuevoUs.setVisible(false);
+               Aceptar.setVisible(true);
+               contraa.setText("");
+               Usuario.setText("");
+               NewUs.setVisible(true);
+               newPass.setVisible(true);
+               Usuario.setVisible(false);
+               contraa.setVisible(false);
+               passver.setVisible(false);
+           }
+           else if(cadenita.equals("Aceptar")){
+               // Crear nuevo usuario
+               String nuevoUsuario = NewUs.getText().trim();
+               String nuevaContra = newPass.getText().trim();
+               
+               if(nuevoUsuario.isEmpty() || nuevaContra.isEmpty()){
+                   JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
+               // Conectar a la base de datos
+               Conecta conexion = new Conecta();
+               ArrayList<datos> lista = conexion.conectar();
+               
+               // Verificar si el usuario ya existe
+               boolean existe = false;
+               for(datos d : lista){
+                   if(d.getUsuario() != null && d.getUsuario().equals(nuevoUsuario)){
+                       existe = true;
+                       break;
+                   }
+               }
+               
+               if(existe){
+                   JOptionPane.showMessageDialog(this, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
+               // Crear nuevo objeto datos con el usuario y contraseña
+               datos nuevoRegistro = new datos();
+               nuevoRegistro.setUsuario(nuevoUsuario);
+               nuevoRegistro.setContraseña(nuevaContra);
+               
+               // Agregar a la lista y grabar
+               lista.add(nuevoRegistro);
+               conexion.grabar(lista);
+               
+               JOptionPane.showMessageDialog(this, "Usuario creado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+               
+               // Restablecer la vista de login
+               NewUs.setVisible(false);
+               newPass.setVisible(false);
+               Usuario.setVisible(true);
+               contraa.setVisible(true);
+               Ingresr.setVisible(true);
+               NuevoUs.setVisible(true);
+               Aceptar.setVisible(false);
+               NewUs.setText("");
+               newPass.setText("");
+           }
+           else if(cadenita.equals("Ingresar")){
+               // Validar credenciales
+               String usuario = Usuario.getText().trim();
+               String contra = contraa.getText().trim();
+               
+               if(usuario.isEmpty() || contra.isEmpty()){
+                   JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                   return;
+               }
+               
+               Conecta conexion = new Conecta();
+               ArrayList<datos> lista = conexion.conectar();
+               
+               boolean encontrado = false;
+               for(datos d : lista){
+                   if(d.getUsuario() != null && d.getUsuario().equals(usuario) && 
+                      d.getContraseña() != null && d.getContraseña().equals(contra)){
+                       encontrado = true;
+                       break;
+                   }
+               }
+               
+               if(encontrado){
+                   JOptionPane.showMessageDialog(this, "Bienvenido " + usuario, "Login Exitoso", JOptionPane.INFORMATION_MESSAGE);
+                   // Aquí puedes abrir la ventana principal
+                   this.dispose();
+                   new Princi();
+               } else {
+                   JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+               }
+           }
     }
+}
         

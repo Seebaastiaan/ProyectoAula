@@ -30,16 +30,6 @@ import javax.swing.SwingConstants;
         Image icon = new ImageIcon(getClass().getResource("/imagenes/LOFODEV.png")).getImage();
         setIconImage(icon);
 
-        foto = new JLabel();
-        foto.setBounds(200, 10, 600, 80);
-        add(foto);
-        
-        iconoo = new ImageIcon(getClass().getResource("/imagenes/LogoBarrita.png"));
-        Image img2 = iconoo.getImage();
-        Image newimg2 = img2.getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newimg2);
-        foto.setIcon(newIcon);
-        
         superior = new JLabel();
         superior.setBounds(0, 0, 1000, 100);
         this.superior.setBackground(new java.awt.Color(32, 67, 38));
@@ -75,15 +65,9 @@ import javax.swing.SwingConstants;
         
 
         
+
         
-        Bajas = new JButton("Bajas");
-        Bajas.setBounds(330, 380, 100, 40);
-        Bajas.addActionListener(this);
-        this.Bajas.setBackground(new java.awt.Color(50, 205, 50));
-        this.Bajas.setOpaque(true);
-        add(Bajas);
-        
-        Consultas = new JButton("Consultas");
+        Consultas = new JButton("Consulta");
         Consultas.setBounds(560, 380, 100, 40);
         Consultas.addActionListener(this);
         this.Consultas.setBackground(new java.awt.Color(50, 205, 50));
@@ -98,7 +82,7 @@ import javax.swing.SwingConstants;
         add(Cambios);
         
         Ventas = new JButton("Ventas");
-        Ventas.setBounds(440, 470, 100, 40);
+        Ventas.setBounds(330, 380, 100, 40);
         Ventas.addActionListener(this);
         this.Ventas.setBackground(new java.awt.Color(50, 205, 50));
         this.Ventas.setOpaque(true);
@@ -122,7 +106,7 @@ import javax.swing.SwingConstants;
         Altas alt = new Altas (); 
     }
         else
-            if(cadb.equals("Consultas")){
+            if(cadb.equals("Consulta")){
             dispose();
                 Consultas alt = new Consultas();
             }
@@ -132,12 +116,6 @@ import javax.swing.SwingConstants;
                 dispose();
                 Cambios alt = new Cambios();
                 }
-                else
-                    if(cadb.equals("Bajas")){
-                    dispose();
-                    Bajas alt = new Bajas();
-                    
-                    }
          else
                     if(cadb.equals("Ventas")){
                     dispose();

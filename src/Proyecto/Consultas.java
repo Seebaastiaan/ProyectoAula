@@ -37,11 +37,6 @@ public class Consultas extends JFrame implements java.io.Serializable, ActionLis
         foto.setBounds(200, 10, 600, 80);
         add(foto);
         
-        iconoo = new ImageIcon(getClass().getResource("/imagenes/LogoBarrita.png"));
-        Image img2 = iconoo.getImage();
-        Image newimg2 = img2.getScaledInstance(foto.getWidth(), foto.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon newIcon = new ImageIcon(newimg2);
-        foto.setIcon(newIcon);
         
         Textito = new JLabel("CONSULTAS");
         Textito.setFont(new java.awt.Font("Segoe UI", 1, 28));
@@ -162,8 +157,8 @@ public class Consultas extends JFrame implements java.io.Serializable, ActionLis
                     for (int i = 0; i < cuantos; i++) {
                     if(Integer.parseInt(Ingresa.getText()) == listita.get(i).getClave()){
                     Nombre.setText(listita.get(i).getNombre());
-                    Cantidad.setText("$ " + listita.get(i).getCantidad());
-                    Precio.setText("" + listita.get(i).getCosto());
+                    Cantidad.setText("" + listita.get(i).getCantidad());
+                    Precio.setText("$ " + listita.get(i).getCosto());
                     JOptionPane.showMessageDialog(this, "Este es el objeto");
                     Nombre.setEditable(false);
                     Cantidad.setEditable(false);
